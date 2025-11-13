@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AgregarPalabraComponent } from './components/agregar-palabra/agregar-palabra.component';
+import { ListaPalabrasComponent } from './components/lista-palabras/lista-palabras.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [AgregarPalabraComponent, ListaPalabrasComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mi-app';
+  listaPalabras: string[] = [];
+
+  // Función que recibe la palabra del componente hijo
+  agregarPalabraAlista(palabra: string) {
+    this.listaPalabras.push(palabra);
+  }
 }

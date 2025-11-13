@@ -1,0 +1,21 @@
+<ul *ngIf="palabras.length > 0">
+  <li *ngFor="let palabra of palabras; let i = index">
+
+    <div *ngIf="editIndex === i; else mostrarPalabra">
+      <input [(ngModel)]="editValue" />
+      <button (click)="guardarEdicion()">Guardar</button>
+      <button (click)="cancelarEdicion()">Cancelar</button>
+    </div>
+    
+
+    <ng-template #mostrarPalabra>
+      {{ palabra }}
+      <button (click)="editarPalabra(i)">Editar</button>
+      <button (click)="eliminarPalabra(i)">Eliminar</button>
+    </ng-template>
+  </li>
+</ul>
+
+<div *ngIf="palabras.length === 0">
+  No hay palabras en la lista
+</div>
